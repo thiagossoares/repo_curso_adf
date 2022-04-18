@@ -1,0 +1,9 @@
+{
+	"name": "adf-cursoudemy-th",
+	"location": "eastus2",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "a0b3b1be-d007-461d-b8a6-19a976c64f38",
+		"tenantId": "8fae097b-fd24-4192-b613-3f562cf6d3e3"
+	}
+}
