@@ -169,7 +169,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"containerName": "filescursoudemy",
-							"fileName": "pessoasCSVFileSystem.csv",
+							"fileName": "animaisFileSystem.csv",
 							"separatorName": "|"
 						}
 					},
