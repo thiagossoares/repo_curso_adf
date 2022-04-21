@@ -1,0 +1,17 @@
+{
+	"name": "ls_local",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "FileServer",
+		"typeProperties": {
+			"host": "C:\\Users\\Thiago\\Documents\\cursos\\Azure Data Factory para Iniciantes\\s9_integration_runtime_self_hosted\\ir_adf",
+			"userId": "Thiago",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiIxNmY1MWYwYS1hZTFlLTQ3NWUtYjExNC0wODQwZjlkZmQzNTUiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "iradf",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

@@ -1,0 +1,65 @@
+{
+	"name": "pipeline_demo_02",
+	"properties": {
+		"activities": [
+			{
+				"name": "postgresql_to_azuresql",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "PostgreSqlSource"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"tableOption": "autoCreate",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "ds_postgresql_local",
+						"type": "DatasetReference",
+						"parameters": {
+							"schemaName": "dw",
+							"tableName": "tb_customer_adf"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ds_generico_azuresql",
+						"type": "DatasetReference",
+						"parameters": {
+							"schemaName": "SalesLT",
+							"tableName": "tb_customer"
+						}
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "adf_05_handson02"
+		},
+		"annotations": []
+	}
+}
