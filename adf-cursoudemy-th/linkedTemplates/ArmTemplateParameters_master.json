@@ -1,0 +1,36 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "adf-cursoudemy-th"
+		},
+		"ls_azuresql_connectionString": {
+			"value": ""
+		},
+		"ls_datalake_accountKey": {
+			"value": ""
+		},
+		"ls_local_password": {
+			"value": ""
+		},
+		"ls_local_postgresql_connectionString": {
+			"value": ""
+		},
+		"ls_datalake_properties_typeProperties_url": {
+			"value": "https://dlscursoudemyth.dfs.core.windows.net"
+		},
+		"ls_local_properties_typeProperties_host": {
+			"value": "C:\\Users\\Thiago\\Documents\\cursos\\Azure Data Factory para Iniciantes\\s9_integration_runtime_self_hosted\\ir_adf"
+		},
+		"ls_local_properties_typeProperties_userId": {
+			"value": "Thiago"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
