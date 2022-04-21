@@ -35,6 +35,10 @@
 			"type": "string",
 			"defaultValue": "Thiago"
 		},
+		"tr_storage_events_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/90246c06-d41d-4007-93f3-ddd62bda5aa2/resourceGroups/rg-curso-udemy/providers/Microsoft.Storage/storageAccounts/dlscursoudemyth"
+		},
 		"containerUri": {
 			"type": "string",
 			"metadata": "URI to storage account containing linked ARM templates"
@@ -82,6 +86,9 @@
 					},
 					"ls_local_properties_typeProperties_userId": {
 						"value": "[parameters('ls_local_properties_typeProperties_userId')]"
+					},
+					"tr_storage_events_properties_typeProperties_scope": {
+						"value": "[parameters('tr_storage_events_properties_typeProperties_scope')]"
 					}
 				}
 			},

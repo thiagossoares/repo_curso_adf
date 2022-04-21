@@ -25,6 +25,9 @@
 		},
 		"ls_local_properties_typeProperties_userId": {
 			"value": "Thiago"
+		},
+		"tr_storage_events_properties_typeProperties_scope": {
+			"value": "/subscriptions/90246c06-d41d-4007-93f3-ddd62bda5aa2/resourceGroups/rg-curso-udemy/providers/Microsoft.Storage/storageAccounts/dlscursoudemyth"
 		}
 	}
 }

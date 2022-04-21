@@ -34,6 +34,10 @@
 		"ls_local_properties_typeProperties_userId": {
 			"type": "string",
 			"defaultValue": "Thiago"
+		},
+		"tr_storage_events_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/90246c06-d41d-4007-93f3-ddd62bda5aa2/resourceGroups/rg-curso-udemy/providers/Microsoft.Storage/storageAccounts/dlscursoudemyth"
 		}
 	},
 	"variables": {
@@ -764,95 +768,35 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/pipe_copydata')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
+			"name": "[concat(parameters('factoryName'), '/tr_storage_events')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
 			"apiVersion": "2018-06-01",
 			"properties": {
-				"activities": [
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
 					{
-						"name": "excel_to_csv",
-						"type": "Copy",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
+						"pipelineReference": {
+							"referenceName": "pipeline_demo_05",
+							"type": "PipelineReference"
 						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "ExcelSource",
-								"additionalColumns": [
-									{
-										"name": "dataCarga",
-										"value": {
-											"value": "@utcnow()",
-											"type": "Expression"
-										}
-									}
-								],
-								"storeSettings": {
-									"type": "AzureBlobFSReadSettings",
-									"recursive": true,
-									"enablePartitionDiscovery": false
-								}
-							},
-							"sink": {
-								"type": "DelimitedTextSink",
-								"storeSettings": {
-									"type": "AzureBlobFSWriteSettings"
-								},
-								"formatSettings": {
-									"type": "DelimitedTextWriteSettings",
-									"quoteAllText": true,
-									"fileExtension": ".txt"
-								}
-							},
-							"enableStaging": false,
-							"translator": {
-								"type": "TabularTranslator",
-								"typeConversion": true,
-								"typeConversionSettings": {
-									"allowDataTruncation": true,
-									"treatBooleanAsNumber": false
-								}
-							}
-						},
-						"inputs": [
-							{
-								"referenceName": "ds_fixo_excel",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "ds_generico_csv",
-								"type": "DatasetReference",
-								"parameters": {
-									"containerName": "csvfiles",
-									"fileName": "csvCor.csv",
-									"separatorName": ";"
-								}
-							}
-						]
+						"parameters": {}
 					}
 				],
-				"policy": {
-					"elapsedTimeMetric": {},
-					"cancelAfter": {}
-				},
-				"folder": {
-					"name": "adf_02_activities"
-				},
-				"annotations": [],
-				"lastPublishTime": "2022-04-17T17:24:47Z"
+				"type": "BlobEventsTrigger",
+				"typeProperties": {
+					"blobPathBeginsWith": "/filescursoudemy/blobs/cidadesTrigger",
+					"blobPathEndsWith": ".csv",
+					"ignoreEmptyBlobs": true,
+					"scope": "[parameters('tr_storage_events_properties_typeProperties_scope')]",
+					"events": [
+						"Microsoft.Storage.BlobCreated",
+						"Microsoft.Storage.BlobDeleted"
+					]
+				}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/ds_fixo_excel')]",
-				"[concat(variables('factoryId'), '/datasets/ds_generico_csv')]"
+				"[concat(variables('factoryId'), '/pipelines/pipeline_demo_05')]"
 			]
 		}
 	]
