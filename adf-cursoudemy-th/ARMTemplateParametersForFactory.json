@@ -28,6 +28,9 @@
 		},
 		"tr_storage_events_properties_typeProperties_scope": {
 			"value": "/subscriptions/90246c06-d41d-4007-93f3-ddd62bda5aa2/resourceGroups/rg-curso-udemy/providers/Microsoft.Storage/storageAccounts/dlscursoudemyth"
+		},
+		"ls_key_vault_properties_typeProperties_baseUrl": {
+			"value": "https://keyvaultcursoudemyth.vault.azure.net/"
 		}
 	}
 }

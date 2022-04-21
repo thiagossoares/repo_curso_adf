@@ -27,6 +27,10 @@
 			"type": "string",
 			"defaultValue": "https://dlscursoudemyth.dfs.core.windows.net"
 		},
+		"ls_key_vault_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://keyvaultcursoudemyth.vault.azure.net/"
+		},
 		"ls_local_properties_typeProperties_host": {
 			"type": "string",
 			"defaultValue": "C:\\Users\\Thiago\\Documents\\cursos\\Azure Data Factory para Iniciantes\\s9_integration_runtime_self_hosted\\ir_adf"
@@ -34,10 +38,6 @@
 		"ls_local_properties_typeProperties_userId": {
 			"type": "string",
 			"defaultValue": "Thiago"
-		},
-		"tr_storage_events_properties_typeProperties_scope": {
-			"type": "string",
-			"defaultValue": "/subscriptions/90246c06-d41d-4007-93f3-ddd62bda5aa2/resourceGroups/rg-curso-udemy/providers/Microsoft.Storage/storageAccounts/dlscursoudemyth"
 		}
 	},
 	"variables": {
@@ -206,6 +206,19 @@
 			"properties": {
 				"type": "SelfHosted",
 				"typeProperties": {}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ls_key_vault')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureKeyVault",
+				"typeProperties": {
+					"baseUrl": "[parameters('ls_key_vault_properties_typeProperties_baseUrl')]"
+				}
 			},
 			"dependsOn": []
 		},
@@ -765,38 +778,6 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/pipelines/pipeline_demo_04')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/tr_storage_events')]",
-			"type": "Microsoft.DataFactory/factories/triggers",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"runtimeState": "Started",
-				"pipelines": [
-					{
-						"pipelineReference": {
-							"referenceName": "pipeline_demo_05",
-							"type": "PipelineReference"
-						},
-						"parameters": {}
-					}
-				],
-				"type": "BlobEventsTrigger",
-				"typeProperties": {
-					"blobPathBeginsWith": "/filescursoudemy/blobs/cidadesTrigger",
-					"blobPathEndsWith": ".csv",
-					"ignoreEmptyBlobs": true,
-					"scope": "[parameters('tr_storage_events_properties_typeProperties_scope')]",
-					"events": [
-						"Microsoft.Storage.BlobCreated",
-						"Microsoft.Storage.BlobDeleted"
-					]
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/pipeline_demo_05')]"
 			]
 		}
 	]

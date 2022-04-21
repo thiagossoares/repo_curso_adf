@@ -39,6 +39,10 @@
 			"type": "string",
 			"defaultValue": "/subscriptions/90246c06-d41d-4007-93f3-ddd62bda5aa2/resourceGroups/rg-curso-udemy/providers/Microsoft.Storage/storageAccounts/dlscursoudemyth"
 		},
+		"ls_key_vault_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://keyvaultcursoudemyth.vault.azure.net/"
+		},
 		"containerUri": {
 			"type": "string",
 			"metadata": "URI to storage account containing linked ARM templates"
@@ -81,14 +85,14 @@
 					"ls_datalake_properties_typeProperties_url": {
 						"value": "[parameters('ls_datalake_properties_typeProperties_url')]"
 					},
+					"ls_key_vault_properties_typeProperties_baseUrl": {
+						"value": "[parameters('ls_key_vault_properties_typeProperties_baseUrl')]"
+					},
 					"ls_local_properties_typeProperties_host": {
 						"value": "[parameters('ls_local_properties_typeProperties_host')]"
 					},
 					"ls_local_properties_typeProperties_userId": {
 						"value": "[parameters('ls_local_properties_typeProperties_userId')]"
-					},
-					"tr_storage_events_properties_typeProperties_scope": {
-						"value": "[parameters('tr_storage_events_properties_typeProperties_scope')]"
 					}
 				}
 			},
@@ -107,6 +111,9 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
+					},
+					"tr_storage_events_properties_typeProperties_scope": {
+						"value": "[parameters('tr_storage_events_properties_typeProperties_scope')]"
 					}
 				}
 			},
